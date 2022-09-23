@@ -25,17 +25,11 @@ def binomesMaker(_godfather, _godson):
     #Première boucle pour attribuer aux parrains un filleul pour être sur qu'ils ont tous au moins 1 filleul
     for i in range(len(_godfather)):
         godson = random.choice(_godson) #Pick un parrain aléatoire dans la liste des parrains
-        while(godson in alreadyPick): #On verifie qu'on l'a pas déjà eu (au cas où)
-            godson = random.choice(_godson)
-            _godson.remove(godson)
         _godson.remove(godson)
         binomes.append([_godfather[i], godson])
     alreadyPick.clear() #On clear la liste pour le deuxième passage pour être sur que tout les filleuls ont des parrains
     for i in range(len(_godson)):
         godfather = random.choice(_godfather)
-        while(godfather in alreadyPick):
-            godfather = random.choice(_godfather)
-            _godfather.remove(godfather)
         alreadyPick.append(godfather)
         binomes.append([godfather, _godson[i]])
     return binomes
